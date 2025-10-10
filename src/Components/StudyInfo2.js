@@ -1,44 +1,33 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './study-info.css';
 
 const StudyInfo2 = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    navigate('/www.dr.dk');
+    navigate('/visualselection');
   };
 
   return (
-    <div style={{
-      padding: '2rem',
-      maxWidth: '600px',
-      margin: '2rem auto',
-      backgroundColor: '#FFD580', // consistent soft orange
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-      color: '#333',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>Study Information 2</h1>
+    <div className='study-center-bg'>
+      <h1>Study Information 2</h1>
       
       <p>
-        You are almost done with our study. You only need to click the button below and complete a short survey about your experience of the voting system
+        In this final part of the study, you will be asked to make a visual selection and then proceed to the voting interface. Please read the instructions carefully before continuing.
       </p>
 
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+      <ul className="study-list">
+        <li>Your choices will help us improve future voting systems.</li>
+        <li>If you have any questions, please contact the research team.</li>
+      </ul>
+
+      <div style={{ textAlign: 'left', marginTop: '2rem' }}>
         <button
           onClick={handleNext}
-          style={{
-            padding: '0.75rem 2rem',
-            backgroundColor: '#FFA500',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            fontSize: '1rem',
-            cursor: 'pointer'
-          }}
+          className='study-button'
         >
-          Go to survey
+          Next
         </button>
       </div>
     </div>

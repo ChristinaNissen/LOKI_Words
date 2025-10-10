@@ -1,0 +1,49 @@
+.study-center-bg {
+  min-height: 100vh;
+  background: #e3f0ff;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.study-center-bg > * {
+  width: 100%;
+  max-width: 600px;
+}
+
+.study-center-content {
+  border-radius: 16px;
+  padding: 48px 36px;
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+}
+
+.study-button {
+  background: #1976d2; /* Distinct blue */
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  margin-top: 2px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.study-button:hover {
+  background: #0d47a1;
+}
+
+.study-list {
+  text-align: left;
+  margin: 1.5rem auto;
+  max-width: 480px;
+}
+
+.study-center-bg h1 {
+  margin-bottom: 1.5rem; /* or your preferred value */
+}

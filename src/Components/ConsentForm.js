@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './study-info.css'
 
 const ConsentForm = () => {
   const navigate = useNavigate();
@@ -9,23 +10,15 @@ const ConsentForm = () => {
   };
 
   return (
-    <div style={{
-      padding: '2rem',
-      maxWidth: '600px',
-      margin: '2rem auto',
-      backgroundColor: '#FFD580', // soft orange
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-      color: '#333',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>Consent Form</h1>
+    <div className='study-center-bg'>
+      <div className='study-center-content'>
+        <h1 style={{ textAlign: 'left', marginBottom: '1rem' }}>Consent Form</h1>
+
+        <p>
+          Welcome to our study! Please read the following information carefully. By continuing, you agree to participate voluntarily.
+        </p>
       
-      <p>
-        Welcome to our study! Please read the following information carefully. By continuing, you agree to participate voluntarily.
-      </p>
-      
-      <ul>
+      <ul style={{ textAlign: "left", margin: "1.5rem auto", maxWidth: 480 }}>
         <li>You can withdraw at any time without penalty.</li>
         <li>Your responses will be kept confidential and anonymous.</li>
         <li>The study is for research purposes only.</li>
@@ -35,22 +28,15 @@ const ConsentForm = () => {
         If you understand and consent, please click "Next" to continue.
       </p>
 
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+      <div style={{ textAlign: 'left', marginTop: '2rem' }}>
         <button
           onClick={handleNext}
-          style={{
-            padding: '0.75rem 2rem',
-            backgroundColor: '#FFA500',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            fontSize: '1rem',
-            cursor: 'pointer'
-          }}
+          className='study-button'
         >
           Next
         </button>
       </div>
+    </div>
     </div>
   );
 };

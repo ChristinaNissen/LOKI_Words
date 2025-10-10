@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './study-info.css';
 
 const StudyInfo1 = () => {
   const navigate = useNavigate();
@@ -9,39 +10,22 @@ const StudyInfo1 = () => {
   };
 
   return (
-    <div style={{
-      padding: '2rem',
-      maxWidth: '600px',
-      margin: '2rem auto',
-      backgroundColor: '#FFD580', // same soft orange
-      borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-      color: '#333',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>Study Information 1</h1>
+    <div className='study-center-bg'>
+      <h1 style={{ textAlign: 'left', marginBottom: '1rem' }}>Study Information 1</h1>
       
       <p>
         Thank you for agreeing to participate. This study aims to explore participants’ experience with voting interfaces. Your responses are anonymous and confidential.
       </p>
 
-      <ul>
+      <ul className="study-list">
         <li>The study consists of a few brief steps including viewing a ballot and answering a short survey.</li>
         <li>Please follow the instructions carefully.</li>
       </ul>
 
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+      <div style={{ textAlign: 'left', marginTop: '2rem' }}>
         <button
           onClick={handleNext}
-          style={{
-            padding: '0.75rem 2rem',
-            backgroundColor: '#FFA500',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            fontSize: '1rem',
-            cursor: 'pointer'
-          }}
+          className='study-button'
         >
           Next
         </button>
