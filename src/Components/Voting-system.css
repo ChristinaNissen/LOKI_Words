@@ -112,8 +112,72 @@ input:focus,
   align-items: center;
 }
 
+.card-wide {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 40px 32px 32px 32px;
+  min-width: 680px;
+  max-width: 1000px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-wide h1 {
+  margin-top: 0;
+}
+
 /* Footer styles */
 .footer {
   background: #fff; /* or another non-grey color */
   /* ...other styles... */
+}
+
+.voting-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.ballot-row {
+  display: flex;
+  align-items: center;
+  padding: 28px 18px;
+  background: #fff;
+  gap: 16px;
+}
+
+.ballot-row-border {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ballot-row input[type="radio"] {
+  accent-color: var(--border);
+  width: 22px;
+  height: 22px;
+  margin-right: 18px;
+}
+
+.ballot-candidate {
+  flex: 1;
+  color: #444;
+  margin: 0 0 0 8px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.ballot-party {
+  color: #444;
+  margin: 0 0 0 24px;
+  min-width: 100px;
+  text-align: right;
+  font-weight: normal;
+}
+
+.voting-desc {
+  color: #444;
+  margin-bottom: 24px;
 }

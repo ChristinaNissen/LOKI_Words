@@ -1,63 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+const candidates = [
+  { id: 1, name: "Alice T. Smith", party: "Party A" },
+  { id: 2, name: "Mark Jones", party: "Party B" },
+  { id: 3, name: "Martin Taylor", party: "Party C" },
+  { id: 4, name: "Ann K. Brown", party: "Party D" },
+  { id: 5, name: "Sofia Lee", party: "Party E" },
+  { id: 6, name: "John Doe", party: "Party F" },
+  { id: 7, name: "Emma White", party: "Party G" },
+  { id: 8, name: "Lucas Green", party: "Party H" },
+];
 
 const Voting = () => {
+  const [selected, setSelected] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/confirmation"); // go to BallotConfirmation
+    if (!selected) {
+      setError("Please select a candidate before submitting your vote.");
+      return;
+    }
+    setError("");
+    navigate("/confirmation");
   };
 
   return (
-    <div style={{
-      padding: "2rem",
-      maxWidth: "600px",
-      margin: "2rem auto",
-      backgroundColor: "#1ABC9C", // teal/green theme
-      borderRadius: "8px",
-      boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-      color: "#fff",
-      fontFamily: "Arial, sans-serif"
-    }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>Vote</h1>
-      
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "1rem" }}>
-          <label>
-            <input type="radio" name="candidate" value="Option 1" /> Option 1
-          </label>
+    <div className="page-wrapper">
+      <Navbar />
+      <main className="welcome-main">
+        <h1>Voting</h1>
+        <p className="voting-desc">
+          Please select your preferred candidate below.
+        </p>
+        <div className="card-wide">
+          <h1>Ballot</h1>
+          <form className="voting-form" onSubmit={handleSubmit}>
+            {candidates.map((c, idx) => (
+              <div
+                className={`ballot-row${idx !== candidates.length - 1 ? " ballot-row-border" : ""}`}
+                key={c.id}
+              >
+                <input
+                  type="radio"
+                  name="ballot"
+                  value={c.id}
+                  checked={selected === c.id}
+                  onChange={() => setSelected(c.id)}
+                />
+                <span className="ballot-candidate">{c.name}</span>
+                <span className="ballot-party">{c.party}</span>
+              </div>
+            ))}
+            {error && <div className="login-error">{error}</div>}
+            <button
+              type="submit"
+              className="button"
+              style={{ marginTop: "24px" }}
+            >
+              Cast Vote
+            </button>
+          </form>
         </div>
-
-        <div style={{ marginBottom: "1rem" }}>
-          <label>
-            <input type="radio" name="candidate" value="Option 2" /> Option 2
-          </label>
-        </div>
-
-        <div style={{ marginBottom: "1rem" }}>
-          <label>
-            <input type="radio" name="candidate" value="Option 3" /> Option 3
-          </label>
-        </div>
-
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              cursor: "pointer",
-              backgroundColor: "#16A085", // darker teal button
-              color: "#fff",
-              border: "none",
-              borderRadius: "4px"
-            }}
-          >
-            Submit Vote
-          </button>
-        </div>
-      </form>
+      </main>
+      <Footer />
     </div>
   );
 };
