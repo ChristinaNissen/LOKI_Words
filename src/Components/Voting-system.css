@@ -1,0 +1,60 @@
+/* Color variables */
+:root {
+  --primary-yellow: #ffd600;
+  --primary-yellow-dark: #e6be00;
+  --primary-green: #20c997;
+  --primary-teal: #17a2b8;
+  --background: #f7f7f7;
+  --border: #000;
+  --button-text: #000;
+  --error: #d32f2f;
+  --error-bg: #fff3f3;
+}
+
+/* Generic button style */
+.button,
+.welcome-login-btn {
+  background: var(--primary-yellow);
+  color: var(--button-text);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  font-size: 18px;
+  margin: 24px 0 0 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button:hover,
+.welcome-login-btn:hover {
+  background: var(--primary-yellow-dark);
+  color: #000;
+}
+
+input,
+.login-input {
+  padding: 10px 12px;
+  border: 1.5px solid var(--primary-green);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  background: var(--background);
+}
+
+input:focus,
+.login-input:focus {
+  border-color: var(--primary-teal);
+}
+
+.login-error {
+  color: var(--error);
+  background: var(--error-bg);
+  border: 1px solid var(--error);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  font-size: 0.98rem;
+  text-align: center;
+}

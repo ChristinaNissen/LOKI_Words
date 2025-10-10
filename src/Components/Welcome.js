@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Welcome.css";
+import "./Voting-system.css";
 import votingIllustration from "../Assets/landingpage_banner.png";
 
 const accordionData = [
@@ -50,7 +51,7 @@ const Welcome = () => {
 				</div>
 				<button
 					className="welcome-login-btn"
-					onClick={() => navigate("/votedbefore")}
+					onClick={() => navigate("/login")}
 				>
 					Login to Vote
 				</button>
