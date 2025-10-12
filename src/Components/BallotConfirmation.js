@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Voting-system.css";
-import "./BallotConfirmation.css"
+import "./BallotConfirmation.css";
+import image_visual from "../Images/alpaca.jpg"
+
 
 const randomWords = ["sheep", "tree", "moon", "star", "river", "cloud"];
 const randomEmojis = [
@@ -27,7 +29,121 @@ const randomEmojis = [
 
 function generateDistinctColors(n) {
   const colors = [];
-  for (let i = 0; i < n; i
+  for (let i = 0; i < n; i++) {
+    const hue = Math.round((360 / n) * i);
+    colors.push(`hsl(${hue}, 70%, 55%)`);
+  }
+  return colors;
+}
+
+function getEmojiGridConfig(n) {
+  // Returns { columns, rows, positions } for 1–10
+  switch (n) {
+    case 1:
+      return { columns: 1, rows: 1, positions: [[0, 0]] };
+    case 2:
+      return { columns: 1, rows: 2, positions: [[0, 0], [0, 1]] };
+    case 3:
+      return { columns: 1, rows: 3, positions: [[0, 0], [0, 1], [0, 2]] };
+    case 4:
+      return { columns: 2, rows: 2, positions: [[0, 0], [1, 0], [0, 1], [1, 1]] };
+    case 5:
+      return {
+        columns: 3,
+        rows: 3,
+        positions: [
+          [0, 0], [2, 0], // top corners
+          [1, 1],         // center
+          [0, 2], [2, 2]  // bottom corners
+        ]
+      };
+    case 6:
+      // 6-card pattern: 2 columns, 3 rows
+      return {
+        columns: 2,
+        rows: 3,
+        positions: [
+          [0, 0], [1, 0], // top row
+          [0, 1], [1, 1], // middle row
+          [0, 2], [1, 2]  // bottom row
+        ]
+      };
+    case 7:
+      // 7-card pattern: 2 (top), 1 (centered), 2 (middle), 2 (bottom)
+      return {
+        columns: 2,
+        rows: 5,
+        positions: [
+          [0, 0], [1, 0],     // top row (2)
+          [0.5, 1],           // second row (centered)
+          [0, 2], [1, 2],     // third row (2)
+          [0, 3], [1, 3]      // fourth row (2)
+        ]
+      };
+    case 8:
+      // 8-card pattern: 2 (top), 1 (centered), 2 (middle), 1 (centered), 2 (bottom)
+      return {
+        columns: 2,
+        rows: 6,
+        positions: [
+          [0, 0], [1, 0],     // top row (2)
+          [0.5, 1],           // second row (centered)
+          [0, 2], [1, 2],     // third row (2)
+          [0.5, 3],           // fourth row (centered)
+          [0, 4], [1, 4]      // fifth row (2)
+        ]
+      };
+    case 9:
+      return {
+        columns: 3,
+        rows: 3,
+        positions: [
+          [0, 0], [1, 0], [2, 0],
+          [0, 1], [1, 1], [2, 1],
+          [0, 2], [1, 2], [2, 2]
+        ]
+      };
+    case 10:
+      // 10-card pattern: 2 (top), 1 (centered), 2, 2, 1 (centered), 2 (bottom)
+      return {
+        columns: 2,
+        rows: 7,
+        positions: [
+          [0, 0], [1, 0],       // top row (2)
+          [0.5, 1],             // second row (centered)
+          [0, 2], [1, 2],       // third row (2)
+          [0, 3], [1, 3],       // fourth row (2)
+          [0.5, 4],             // fifth row (centered)
+          [0, 5], [1, 5]        // bottom row (2)
+        ]
+      };
+    default:
+      // fallback to a square grid
+      const columns = Math.ceil(Math.sqrt(n));
+      const rows = Math.ceil(n / columns);
+      const positions = [];
+      let count = 0;
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < columns; x++) {
+          if (count++ < n) positions.push([x, y]);
+        }
+      }
+      return { columns, rows, positions };
+  }
+}
+
+const BallotConfirmation = ({ type = "card", ballotNumber = 12345 }) => {
+  const navigate = useNavigate();
+  const now = new Date();
+  const dateTime = now.toLocaleString();
+
+  // Move these inside the component
+  const randomColors = generateDistinctColors(20);
+  const emojiRef = randomEmojis[Math.floor(Math.random() * randomEmojis.length)];
+  const colorRef = randomColors[Math.floor(Math.random() * randomColors.length)];
+  const wordRef = randomWords[Math.floor(Math.random() * randomWords.length)];
+  const numberOfEmojis = Math.floor(Math.random() * 10) + 1; // 1 to 10
+  const config = getEmojiGridConfig(numberOfEmojis);
 
   return (
     <div className="page-wrapper">
@@ -86,11 +202,73 @@ function generateDistinctColors(n) {
               <div
                 className="confirmation-card"
                 style={{
-                  backgroundColor: colorRef
+                  backgroundColor: colorRef,
+                  position: "relative"
                 }}
               >
-                <span className="confirmation-main" style={{ fontSize: 32 }}>{emojiRef}</span>
-                <div className="confirmation-date">{dateTime}</div>
+                <span className="card-corner card-corner-top-left">{numberOfEmojis}</span>
+                <span className="card-corner card-corner-bottom-right">{numberOfEmojis}</span>
+                <div className="emoji-area">
+                  <div
+                    className="confirmation-emoji-grid"
+                    style={{
+                      gridTemplateColumns: `repeat(${config.columns}, 1fr)`,
+                      gridTemplateRows: `repeat(${config.rows}, 1fr)`
+                    }}
+                  >
+                    {config.positions.map(([x, y], i) => {
+  let fontSize;
+  switch (numberOfEmojis) {
+    case 1:
+      fontSize = "80px";
+      break;
+    case 2:
+      fontSize = "45px";
+      break;
+    case 3:
+      fontSize = "45px";
+      break;
+    case 4:
+      fontSize = "45px";
+      break;
+    case 5:
+      fontSize = "45px";
+      break;
+    case 6:
+      fontSize = "45px";
+      break;
+    case 7:
+      fontSize = "45px";
+      break;
+    case 8:
+      fontSize = "45px";
+      break;
+    case 9:
+      fontSize = "45px";
+      break;
+    case 10:
+      fontSize = "38px";
+      break;
+    default:
+      fontSize = "36px";
+  }
+  return (
+    <span
+      key={i}
+      className="confirmation-emoji"
+      style={{
+        fontSize,
+        gridColumn: x % 1 === 0 ? x + 1 : "1 / span 2",
+        gridRow: y + 1,
+        justifySelf: "center"
+      }}
+    >
+      {emojiRef}
+    </span>
+  );
+})}
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -106,3 +284,4 @@ function generateDistinctColors(n) {
 };
 
 export default BallotConfirmation;
+
