@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Voting-system.css";
 import "./BallotConfirmation.css";
@@ -11,7 +10,6 @@ function BallotConfirmation_Picture() {
 
   return (
     <div className="page-wrapper">
-      <Navbar />
       <main className="welcome-main">
         <h1>Confirmation</h1>
         <div className="confirmation-desc">

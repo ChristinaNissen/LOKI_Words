@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Voting-system.css";
 import "./BallotConfirmation.css";
@@ -160,20 +159,20 @@ const BallotConfirmation = ({ type = "card", ballotNumber = 12345 }) => {
 
   return (
     <div className="page-wrapper">
-      <Navbar />
+
       <main className="welcome-main">
        <h1>Confirmation</h1>
        <div className="confirmation-desc">
           You have cast your ballot succesfully!
 				</div>
          <div className="confirmation-desc">
-  Below is a visual presentation of your ballot that you have just cast.<br />
+  Below is a visual presentation of your cast ballot.<br />
   <span>
-    This is for your reference only and you need to remember this in the case you want to update your vote.
+    This is you need to remember in the case you want to update your vote.
   </span>
   <br /><br />
   <span>
-    <strong>OBS!</strong> For security reasons, you should <u><strong>not</strong></u> share this information with anyone and you should not save this visual presentation anywhere.
+    <strong>OBS!</strong> For security reasons, you should <strong>not share</strong>  this information with anyone and you should <strong>not save</strong> this visual presentation anywhere.
   </span>
 </div>
 

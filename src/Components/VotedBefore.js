@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import "./Voting-system.css";
 import Footer from "./Footer";
 
@@ -18,7 +17,6 @@ const VotedBefore = () => {
 
   return (
     <div className="page-wrapper">
-      <Navbar />
       <main className="welcome-main">
         <h1>Welcome!</h1>
         <p className="votedbefore-desc">

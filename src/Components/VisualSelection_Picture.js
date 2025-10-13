@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Voting-system.css";
 import "./VisualSelection_Picture.css";
@@ -155,7 +154,6 @@ const VisualSelection = () => {
 
   return (
     <div className="page-wrapper">
-      <Navbar />
       <main className="welcome-main">
         <h1>Identification of previously cast ballots</h1>
         <div className="welcome-desc">

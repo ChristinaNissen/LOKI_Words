@@ -1,4 +1,14 @@
 /* Add to: /Users/christinanissen/Desktop/New flexible/voting-app/src/Components/Welcome.css */
+.login-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;   /* space from navbar to h1 */
+  padding-bottom: 48px; /* space from bottom of card to footer */
+  min-height: calc(100vh - [navbar height] - [footer height]);
+  /* Replace [navbar height] and [footer height] with your actual values if needed */
+}
+
 .login-card {
   background: #fff;
   border-radius: 12px;
@@ -10,6 +20,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 0; /* Remove any extra margin if present */
 }
 
 .login-form {
@@ -28,7 +39,7 @@
 
 .login-input {
   padding: 10px 12px;
-  border: 1.5px solid var(--border); /* Use primary yellow */
+  border: 0.5px solid #888; /* Subtle dark grey */
   border-radius: 8px;
   font-size: 1rem;
   outline: none;
@@ -38,5 +49,36 @@
 }
 
 .login-input:focus {
-  border-color: var(--border); /* Use primary yellow on focus */
+  border-color: var(--primary-yellow, #ffd600);
+}
+
+.login-input:focus,
+.login-input:not(:placeholder-shown) {
+  border-color: var(--primary-yellow, #ffd600);
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper .login-input {
+  width: 100%;
+  padding-right: 38px; /* space for the eye icon */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000;
+  font-size: 1.2em;
+  user-select: none;
+}
+.password-toggle:focus {
+  outline: 2px solid var(--primary-yellow, #ffd600);
 }

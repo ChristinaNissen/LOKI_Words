@@ -38,24 +38,62 @@
   margin-right: 4px;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-links {
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
-.navbar-links a {
-  color: #222;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  display: flex;
+.navbar-link {
+  display: inline-flex;
   align-items: center;
-  padding: 7px 16px; /* Add padding here */
-  border-radius: 10px; /* Add border-radius here for consistency */
-  transition: background 0.2s, color 0.2s;
+  margin-right: 16px; /* Adjust margin as needed */
+  text-decoration: none;
+  color: inherit;
 }
 
-.navbar-links a:hover {
-background: #e6be00;;
+.navbar-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.navbar-text {
+  font-size: 1rem;
+}
+
+/* Profile icon and dropdown */
+.navbar-profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  margin-top: 4px;
+  border-radius: 4px;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #f7f7f7;
 }

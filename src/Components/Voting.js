@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Voting-system.css";
 
@@ -44,7 +43,6 @@ const Voting = () => {
 
   return (
     <div className="page-wrapper">
-      <Navbar />
       <main className="welcome-main">
         <h1>Voting</h1>
         <p className="voting-desc">

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "./Login.css";
 import "./Voting-system.css";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // install with: npm install react-icons
 
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [userIDError, setUserIDError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
@@ -35,23 +36,25 @@ const Login = () => {
     }
 
     if (!hasError) {
+      setIsLoggedIn(true); // Set logged in status
       navigate("/votedbefore");
     }
   };
 
   return (
     <div className="page-wrapper">
-      <Navbar />
       <main className="welcome-main">
-        <h1>Login</h1>
+        <h1>Login to your account</h1>
         <div className="welcome-desc">
-XXXXXX				</div>
+          Please enter your details below to access the online voting system.
+        </div>
         <div className="login-card">
           <form onSubmit={handleSubmit} className="login-form">
             <label htmlFor="userID">User ID</label>
             <input
               id="userID"
               type="text"
+              placeholder ="Enter user ID"
               value={userID}
               onChange={(e) => setUserID(e.target.value)}
               className="login-input"
@@ -60,14 +63,26 @@ XXXXXX				</div>
             {userIDError && <div className="login-error">{userIDError}</div>}
 
             <label htmlFor="password">Password</label>
+            <div className="password-input-wrapper">
             <input
               id="password"
-              type="password"
+              className="login-input"
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="login-input"
+              placeholder = "Enter password"
               autoComplete="current-password"
             />
+            <span
+              className="password-toggle"
+              onClick={() => setShowPassword(v => !v)}
+              tabIndex={0}
+              role="button"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
             {passwordError && <div className="login-error">{passwordError}</div>}
 
             <button type="submit" className="welcome-login-btn">
