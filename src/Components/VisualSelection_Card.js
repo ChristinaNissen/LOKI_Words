@@ -248,7 +248,7 @@ const VisualSelection = () => {
           </div>
           <div className="security-box">
             <p className="text-small">
-              <strong>Security Feature:</strong>
+              <strong>Security Feature:</strong><br/>
               This part of the voting system makes sure you can vote freely without any outside pressure.
               Only you can update your vote so that your privacy is protected.
             </p>
@@ -368,7 +368,7 @@ const VisualSelection = () => {
         {showConfirm && (
           <div className="modal-backdrop">
             <div className="modal">
-              <h2> Please review your chosen cards below. <br /> Do you wish to proceed?</h2>
+              <h2> Please review your chosen card(s) below. <br /> Do you wish to proceed?</h2>
               <div className="selected-cards-preview">
                 {selected.map(idx => {
                   const card = cards[idx];
@@ -412,14 +412,16 @@ const VisualSelection = () => {
                   );
                 })}
               </div>
-              <div className="modal-actions">
-                <button className="button" onClick={confirmSelection}>
-                  Yes, proceed
-                </button>
-                <button className="button-secondary" onClick={() => setShowConfirm(false)}>
-                  Cancel
-                </button>
-              </div>
+              <div className="modal-actions" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap:"16px", marginTop: "5px", marginBottom: "20px" }}>
+  <button 
+    className="button" 
+    onClick={confirmSelection}>
+    Yes, proceed
+  </button>
+  <button className="button-secondary" onClick={() => setShowConfirm(false)}>
+    Cancel
+  </button>
+</div>
             </div>
           </div>
         )}
