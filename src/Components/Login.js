@@ -4,7 +4,8 @@ import "./Login.css";
 import "./Voting-system.css";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // install with: npm install react-icons
-
+import { addVoter } from '../API/Voter.js'; // Adjust path as needed
+import Parse from "parse";
 
 const Login = ({ setIsLoggedIn }) => {
   const [userID, setUserID] = useState("");
@@ -17,29 +18,40 @@ const Login = ({ setIsLoggedIn }) => {
 
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let hasError = false;
+const handleSubmit = async (e) => {
+  console.log("Parse keys:", Parse.applicationId, Parse.javaScriptKey, Parse.serverURL);
+  e.preventDefault();
+  let hasError = false;
 
-    if (!userID.trim()) {
-      setUserIDError("Please enter your user ID");
-      hasError = true;
-    } else {
-      setUserIDError("");
-    }
+  if (!userID.trim()) {
+    setUserIDError("Please enter your user ID");
+    hasError = true;
+  } else {
+    setUserIDError("");
+  }
 
-    if (!password.trim()) {
-      setPasswordError("Please enter your password");
-      hasError = true;
-    } else {
-      setPasswordError("");
-    }
+  if (!password.trim()) {
+    setPasswordError("Please enter your password");
+    hasError = true;
+  } else {
+    setPasswordError("");
+  }
 
-    if (!hasError) {
-      setIsLoggedIn(true); // Set logged in status
+  if (!hasError) {
+    try {
+      await addVoter(userID, password);
+      setIsLoggedIn(true);
       navigate("/votedbefore");
+    } catch (error) {
+      if (error.message.includes("Account already exists")) {
+        setUserIDError("This user ID is already taken. Please choose another.");
+      } else {
+        setPasswordError("Login failed. Please try again.");
+      }
+      console.error('Error adding voter:', error);
     }
-  };
+  }
+};
 
   return (
     <div className="page-wrapper">

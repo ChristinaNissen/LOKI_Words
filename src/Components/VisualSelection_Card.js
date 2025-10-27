@@ -5,6 +5,8 @@ import "./Voting-system.css";
 import "./VisualSelection_Card.css";
 import ProcessBar from "./ProcessBar.js";
 import VoteContext from "../Contexts/VoteContext";
+import { saveBallotSelections } from '../API/Voter.js'; // Adjust path as needed
+import Parse from "parse";
 
 const staticCard = {
   numberOfEmojis: 6,
@@ -223,20 +225,24 @@ const VisualSelection = () => {
   };
 
   // Instead of navigating immediately, show the confirmation modal
-  const handleNext = () => {
+  const handleNext = async (e) => {
     if (selected.length > 0) {
+      e.preventDefault();
+      await saveBallotSelections(selected);
       setShowConfirm(true);
     } else {
       setShowError(true);
     }
   };
 
-  const closeError = () => setShowError(false);
-  
+
   // When user confirms, navigate to voting
   const confirmSelection = () => {
     navigate("/voting", { state: { userSelectedYes: true } });
   };
+
+  const closeError = () => setShowError(false);
+
 
   return (
     <div className="page-wrapper">
