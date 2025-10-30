@@ -10,6 +10,7 @@ import BallotConfirmation from './Components/BallotConfirmation_Card';
 import BallotConfirmation_Picture from './Components/BallotConfirmation_Picture';
 import VisualSelectionPicture from './Components/VisualSelection_Picture';
 import StudyInfo2 from './Components/StudyInfo2';
+import StudyInfo3 from './Components/StudyInfo3';
 import VisualSelection from './Components/VisualSelection_Card';
 import Navbar from './Components/Navbar';
 import './App.css';
@@ -30,7 +31,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const hideNavbarOn = ["/", "/studyinfo1", "/studyinfo2"];
+  const hideNavbarOn = ["/", "/studyinfo1", "/studyinfo2", "/studyinfo3"];
   const [userSelectedYes, setUserSelectedYes] = useState(false);
 
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/confirmation" element={<BallotConfirmation setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/confirmation3" element={<BallotConfirmation_Picture setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/studyinfo2" element={<StudyInfo2 />} />
+          <Route path="/studyinfo3" element={<StudyInfo3 />} />
           <Route path="/selection" element={<VisualSelection />} />
           <Route path="/selection2" element={<VisualSelectionPicture />} />
           <Route path="/welcome" element={<Welcome />} />
