@@ -15,7 +15,7 @@
   width: 100%;
   max-width: 800px; /* Match the card-wide max-width */
   margin: 24px auto 0 auto;
-  padding: 0 20px;  /* Side spacing */
+  padding: 0 20px; /* Side spacing */
   box-sizing: border-box;
 }
 
@@ -70,7 +70,8 @@
   font-weight: normal;
   color: #444;
   margin-bottom: 24px;
-font-size: 1.1rem;}
+  font-size: 1.1rem;
+}
 
 .ballot-party {
   margin: 0 0 0 24px;
@@ -87,4 +88,78 @@ font-size: 1.1rem;}
   flex-direction: column;
   align-items: stretch;
   width: 100%;
+}
+
+.ballot-title {
+  width: 100%;
+  text-align: left;
+  margin: 0 0 10px 40px;
+}
+
+@media (max-width: 600px) {
+
+  .ballot-candidate,
+  .ballot-party {
+    font-size: 16px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 4px;      /* Add a little padding for visual space */
+    padding-right: 4px;
+  }
+
+  .button-wrapper {
+    padding: 0 16px;        /* More side padding */
+    margin-top: 24px;       /* More space above buttons */
+  }
+
+  button .next-button {
+    margin: 20px 0 0 0;
+    padding: 12px 0;
+    align-items: center;
+  }
+
+  .ballot-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;              /* Increased gap */
+    padding: 18px 14px;     /* Increased padding */
+  }
+
+  .ballot-row input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;     /* Slightly more space */
+  }
+
+  .ballot-row input[type="radio"]:checked::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .ballot-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 6px;
+  }
+
+  .ballot-candidate,
+  .ballot-party {
+    font-size: 15px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-wide h1.ballot-title,
+  .card-wide .ballot-title {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

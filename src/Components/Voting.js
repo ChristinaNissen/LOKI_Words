@@ -77,7 +77,7 @@ const Voting = () => {
           Please select your preferred candidate below.
         </div>
         <div className="card-wide">
-          <h1 style={{ width: "100%", textAlign: "left", margin: "0 0 10px 40px" }}>
+          <h1 className="ballot-title">
             Ballot
           </h1>
           <form id="votingForm" className="voting-form" onSubmit={handleSubmit}>
@@ -94,6 +94,7 @@ const Voting = () => {
                   value={c.id}
                   checked={selected === c.id}
                   onChange={() => setSelected(c.id)}
+                  className= "input-ballot"
                   style={{ accentColor: "var(--primary-yellow)" }}
                 />
                 <span className="ballot-candidate">{c.name}</span>
