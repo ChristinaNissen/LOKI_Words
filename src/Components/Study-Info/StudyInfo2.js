@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import getCurrentUser from "../API/Voter";
+import getCurrentUser from "../../API/Voter";
 import "./study-info.css";
 
 const StudyInfo2 = () => {

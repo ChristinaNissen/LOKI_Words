@@ -21,12 +21,12 @@ const PrivateModeWarning = () => {
           <p className="text-small">
            <strong>Security Feature:</strong><br/>
           For your security and privacy, please use your browser's private (incognito)
-          browsing mode when using the voting platform. This ensures that your session is
+          mode when using the voting platform. This ensures that your session is
           protected and your browsing data is not retained.
           </p>
         </div>
         <div className="card">
-          <h2 style={{ width: "100%", textAlign: "left", margin: "0 0 10px 0px" }}>
+          <h2>
             How to Enable Private Browsing
           </h2>
           <p className="text-small" style={{textAlign:"left", marginTop:"0px", marginBottom:"10px"}}>
@@ -41,17 +41,7 @@ const PrivateModeWarning = () => {
               muted
               playsInline
               controls
-              style={{
-                width: "100%",
-                maxWidth: "600px",
-                height: "180px",
-                objectFit: "cover",
-                borderRadius: "8px",
-                background: "#000",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                marginBottom: "8px",
-                border: "1.5px solid #ccc" 
-              }}
+             className= "private-video"
               onTimeUpdate={e => {
                 if (e.target.currentTime >= 5) {
                   e.target.currentTime = 0;
@@ -59,14 +49,7 @@ const PrivateModeWarning = () => {
                 }
               }}
             />
-            <p style={{ 
-              textAlign: "center", 
-              marginTop: "0px",
-              marginBottom: "0",
-              fontSize: "1rem", 
-              color: "#444",
-              fontStyle: "italic" 
-            }}>
+            <p className="text-small" style={{fontStyle: "italic"}}>
               How to enable private browsing using method 1.
             </p>
           </div>

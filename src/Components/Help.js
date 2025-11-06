@@ -565,7 +565,7 @@ const Help = () => {
 	return (
 		<div className="page-wrapper">
 			<main className="welcome-main">
-				<h1 className="welcome-title">Help &amp; FAQ</h1>
+				<h1>Help &amp; FAQ</h1>
 				<div className="text-main">
 					Below you find answers to frequently asked questions about the online voting system. <br/>
 					If you need further assistance, please visit your local voting station.

@@ -100,3 +100,139 @@
   cursor: pointer;
   min-width: 8rem;
 }
+
+.private-video{
+width: 90%;
+max-width: 600px;
+height: 180px;
+object-fit: cover;
+border-radius: 8px;
+background: #000;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+margin-bottom: 8px;
+border: 1.5px solid #ccc;
+}
+
+
+
+@media (max-width: 600px) {
+  .security-box {
+    background-color: rgba(255, 255, 204, 0.8);
+    border: 2px solid hsl(50, 100%, 50%);
+    padding: 8px 8px;
+    border-radius: 3px;
+    max-width: 90%;
+    margin: 12px 2vw;
+    text-align: left;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .security-box-warning p strong {
+    display: inline !important;
+    white-space: normal !important;
+    margin: 0 !important;
+    font-size: 1rem;
+  }
+
+  .modal-backdrop-no-private-mode {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 2000;
+    padding-top: 10vw;
+    box-sizing: border-box;
+  }
+
+  .modal-no-private-mode {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    padding: 14px 4px;
+    min-width: 0;
+    max-width: 98vw;
+    text-align: center;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .study-modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    z-index: 2000;
+    padding-top: 10vw;
+    box-sizing: border-box;
+  }
+
+  .study-modal {
+    background: #e3f0ff;
+    border-radius: 8px;
+    border: 2px solid #1976d2;
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.10);
+    padding: 18px 6px;
+    max-width: 98vw;
+    width: 98vw;
+    text-align: center;
+    color: #222;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .study-modal h2 {
+    color: #1976d2;
+    font-size: 1.2rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .study-modal p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .study-modal-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .study-modal .study-button,
+  .study-modal .study-button-secondary {
+    padding: 0.7em 0.5em;
+    font-size: 0.97rem;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .study-modal .study-button-secondary {
+    background-color: #bdbdbd;
+    color: #222;
+  }
+}
+
+.private-mode-h2 {
+  width: 100%;
+  text-align: left;
+  margin: 0 0 10px 0;
+  font-size: 1.1rem; /* Match accordion-title in Welcome.css */
+  font-weight: bold;
+}
+
+
+  @media (max-width: 600px) {
+  .card > div[style*="background-color: #f7f7f7"] {
+    font-size: 0.93rem !important;
+  }
+}
+
+
+

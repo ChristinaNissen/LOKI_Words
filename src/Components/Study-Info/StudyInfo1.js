@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./study-info.css";
-import Instructions from "../Assets/Instructions_e-voting.pdf";
-import { downloadFile } from "../util";
+import Instructions from "../../Assets/Instructions_e-voting.pdf";
+import { downloadFile } from "../../util";
 
 const StudyInfo1 = () => {
   const [checked, setChecked] = useState(false);

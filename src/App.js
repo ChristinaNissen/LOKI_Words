@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import ConsentForm from './Components/ConsentForm';
-import StudyInfo1 from './Components/StudyInfo1';
+import ConsentForm from './Components/Study-Info/ConsentForm';
+import StudyInfo1 from './Components/Study-Info/StudyInfo1';
 import Welcome from './Components/Welcome';
 import Login from './Components/Login';
 import VotedBefore from './Components/VotedBefore';
@@ -11,8 +11,8 @@ import BallotConfirmation_Picture from './Components/BallotConfirmation_Picture'
 import BallotConfirmation_Word from './Components/BallotConfirmation_Word';
 import VisualSelectionPicture from './Components/VisualSelection_Picture';
 import VisualSelectionWord from './Components/VisualSelection_Word';
-import StudyInfo2 from './Components/StudyInfo2';
-import StudyInfo3 from './Components/StudyInfo3';
+import StudyInfo2 from './Components/Study-Info/StudyInfo2';
+import StudyInfo3 from './Components/Study-Info/StudyInfo3';
 import VisualSelection from './Components/VisualSelection_Card';
 import Navbar from './Components/Navbar';
 import './App.css';

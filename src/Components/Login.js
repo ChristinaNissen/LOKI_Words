@@ -110,7 +110,7 @@ const handleSubmit = async (e) => {
           </div>
             {passwordError && <div className="login-error">{passwordError}</div>}
 
-            <button type="submit" className="button">
+            <button type="submit" className="button button-login">
               Login
             </button>
           </form>
