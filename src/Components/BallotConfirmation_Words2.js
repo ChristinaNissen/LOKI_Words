@@ -3,15 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import "./Voting-system.css";
 import "./BallotConfirmation.css";
-import word from "../Words/Sibling.png";
-import word2 from "../Words/Actress.png";
+import word from "../Words/Actress.png";
 import ProcessBar from "./ProcessBar.js"; 
 import { useLocation } from "react-router-dom";
 import VoteContext from "../Contexts/VoteContext";
 import { useContext, useState } from "react";
 import { saveVisuaRepresentation } from "../API/Voter";
 
-function BallotConfirmation_Word(setIsLoggedIn) {
+function BallotConfirmation_Words2(setIsLoggedIn) {
   const navigate = useNavigate();
   const location = useLocation();
   const { userSelectedYes } = useContext(VoteContext);
@@ -100,7 +99,7 @@ function BallotConfirmation_Word(setIsLoggedIn) {
 
             <div className="confirmation-info">
                  <div className="confirmation-card-label" style={{fontWeight: "bold", fontSize: "1.5rem", marginTop: "10px"}}>
-            Sibling
+            Actress
           </div>
               <div className="confirmation-datetime">{dateTime}</div>
               <div className="confirmation-candidate"> {votedCandidate}</div>
@@ -133,7 +132,7 @@ function BallotConfirmation_Word(setIsLoggedIn) {
   );
 }
 
-export default BallotConfirmation_Word;
+export default BallotConfirmation_Words2;
 
 
 

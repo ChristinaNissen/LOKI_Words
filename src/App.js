@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import ConsentForm from './Components/Study-Info/ConsentForm';
+import ConsentForm2 from './Components/Study-Info/ConsentForm2';
 import StudyInfo1 from './Components/Study-Info/StudyInfo1';
 import Welcome from './Components/Welcome';
 import Login from './Components/Login';
 import VotedBefore from './Components/VotedBefore';
 import Voting from './Components/Voting';
 import BallotConfirmation_Word from './Components/BallotConfirmation_Word';
+import BallotConfirmation_Words2 from './Components/BallotConfirmation_Words2';
 import VisualSelectionWord from './Components/VisualSelection_Word';
 import StudyInfo2 from './Components/Study-Info/StudyInfo2';
 import StudyInfo3 from './Components/Study-Info/StudyInfo3';
 import Navbar from './Components/Navbar';
 import './App.css';
 import VoteContext from "./Contexts/VoteContext";
-import PrivateModeWarning from './Components/PrivateModeWarning';
 import NoPrivateMode from './Components/NoPrivateMode';
 import Help from './Components/Help';
 import Parse from "parse";
@@ -30,7 +31,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const hideNavbarOn = ["/", "/studyinfo1", "/studyinfo2", "/studyinfo3"];
+  const hideNavbarOn = ["/", "/studyinfo1", "/studyinfo2", "/studyinfo3", "/consent"];
   const [userSelectedYes, setUserSelectedYes] = useState(false);
   
   // Initialize selectedImage from sessionStorage if it exists
@@ -58,6 +59,7 @@ function App() {
       <VoteContext.Provider value={{ userSelectedYes, setUserSelectedYes, selectedImage, setSelectedImage, selectedImageName, setSelectedImageName, selectedImageIndex, setSelectedImageIndex }}>
         <Routes>
           <Route path="/" element={<ConsentForm />} />
+          <Route path="/consent" element={<ConsentForm2 />} />
           <Route path="/studyinfo1" element={<StudyInfo1 />} />
           <Route path="/studyinfo2" element={<StudyInfo2 />} />
           <Route path="/studyinfo3" element={<StudyInfo3 />} />
@@ -66,6 +68,7 @@ function App() {
           <Route path="/selection" element={<VisualSelectionWord />} />
           <Route path="/voting" element={<Voting  />} />
           <Route path="/confirmation" element={<BallotConfirmation_Word setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/confirmation2" element={<BallotConfirmation_Words2 setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/private-mode" element={<NoPrivateMode/>} />
           <Route path="/help" element={<Help />} />
