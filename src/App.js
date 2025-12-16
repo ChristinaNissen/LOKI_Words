@@ -6,14 +6,10 @@ import Welcome from './Components/Welcome';
 import Login from './Components/Login';
 import VotedBefore from './Components/VotedBefore';
 import Voting from './Components/Voting';
-import BallotConfirmation from './Components/BallotConfirmation_Card';
-import BallotConfirmation_Picture from './Components/BallotConfirmation_Picture';
 import BallotConfirmation_Word from './Components/BallotConfirmation_Word';
-import VisualSelectionPicture from './Components/VisualSelection_Picture';
 import VisualSelectionWord from './Components/VisualSelection_Word';
 import StudyInfo2 from './Components/Study-Info/StudyInfo2';
 import StudyInfo3 from './Components/Study-Info/StudyInfo3';
-import VisualSelection from './Components/VisualSelection_Card';
 import Navbar from './Components/Navbar';
 import './App.css';
 import VoteContext from "./Contexts/VoteContext";
@@ -63,20 +59,15 @@ function App() {
         <Routes>
           <Route path="/" element={<ConsentForm />} />
           <Route path="/studyinfo1" element={<StudyInfo1 />} />
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/votedbefore" element={<VotedBefore />} />
-          <Route path="/voting" element={<Voting  />} />
-          <Route path="/confirmation" element={<BallotConfirmation setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/confirmation2" element={<BallotConfirmation_Picture setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/confirmation3" element={<BallotConfirmation_Word setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/studyinfo2" element={<StudyInfo2 />} />
           <Route path="/studyinfo3" element={<StudyInfo3 />} />
-          <Route path="/selection" element={<VisualSelection />} />
-          <Route path="/selection2" element={<VisualSelectionPicture />} />
-          <Route path="/selection3" element={<VisualSelectionWord />} />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/votedbefore" element={<VotedBefore />} />
+          <Route path="/selection" element={<VisualSelectionWord />} />
+          <Route path="/voting" element={<Voting  />} />
+          <Route path="/confirmation" element={<BallotConfirmation_Word setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/welcome" element={<Welcome />} />
-          <Route path="/private-mode" element={<PrivateModeWarning />} />
-          <Route path="/private-mode1" element={<NoPrivateMode/>} />
+          <Route path="/private-mode" element={<NoPrivateMode/>} />
           <Route path="/help" element={<Help />} />
           <Route path="*" element={<Navigate to="/welcome" replace />} />
         </Routes>
