@@ -158,7 +158,6 @@ const VisualSelectionWord = () => {
 
   // New state for visual representation and correctness
   const [visualRepresentation, setVisualRepresentation] = useState(null);
-  const [isCorrectSelection, setIsCorrectSelection] = useState(null);
 
   // Add these states at the top of your component
   const [search, setSearch] = useState("");
@@ -273,8 +272,6 @@ const VisualSelectionWord = () => {
     console.log("Selected base names:", selectedBaseNames);
     console.log("Visual base name:", visualBaseName);
     console.log("Is correct:", isCorrect);
-
-    setIsCorrectSelection(isCorrect);
 
     try {
       await saveBallotSelections(selected.map(idx => items[idx].split('/').pop())); // Save full file names

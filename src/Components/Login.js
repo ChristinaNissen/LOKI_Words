@@ -9,7 +9,6 @@ import { addVoter, loginVoter } from '../API/Voter.js'; // Adjust path as needed
 const Login = ({ setIsLoggedIn }) => {
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
-  const [randomID, setRandomID] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [userIDError, setUserIDError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -82,7 +81,6 @@ const handleSubmit = async (e) => {
           const hashedPassword = await hashPassword(password);
           // Generate a random 4-digit number
           const random4Digit = Math.floor(1000 + Math.random() * 9000).toString();
-          setRandomID(random4Digit);
           await addVoter(hashedUserID, hashedPassword, random4Digit);
           setIsLoggedIn(true);
           navigate("/votedbefore");
