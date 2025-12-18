@@ -149,6 +149,13 @@ const VisualSelectionWord = () => {
   const [showError, setShowError] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false); // modal state
 
+  // Close modal if all words are removed
+  useEffect(() => {
+    if (showConfirm && selected.length === 0) {
+      setShowConfirm(false);
+    }
+  }, [selected, showConfirm]);
+
   // New state for visual representation and correctness
   const [visualRepresentation, setVisualRepresentation] = useState(null);
   const [isCorrectSelection, setIsCorrectSelection] = useState(null);
@@ -306,7 +313,7 @@ const VisualSelectionWord = () => {
           </h1>
           <div className="instruction-list" style={{ maxWidth: "800px", margin: "0 auto 0px auto", textAlign:"left" }}>
             <ul>
-              <li>You need to select all the words below that you have seen when casting your previous ballots.</li>
+              <li>You must select <strong>all</strong> the words below that you have seen when casting your previous ballots. This includes words from both valid and invalid ballots.</li>
               <li>The system will not reveal if your selection is correct for security reasons.</li>
               <li>Only the correct selection will ensure that your vote gets updated and counted into the results.</li>
               <li>If you are unsure or cannot remember your words, please contact election officials at your polling station.</li>
@@ -367,13 +374,13 @@ const VisualSelectionWord = () => {
 <hr className="filter-divider-visual" />
           
           <div className="selected-scroll-wrapper">
-            <div className="selected-count-inside">
-              {selected.length} selected
-            </div>
-            
             <p className="scroll-instruction-text">
               Scroll through the words and use the "Next page" button below to see more.
             </p>
+            
+            <div className="selected-count-inside">
+              {selected.length} selected
+            </div>
           </div>
           
           <div className="pictures-scroll-container">
@@ -460,8 +467,10 @@ const VisualSelectionWord = () => {
             <div className="modal-picture">
 
               <p style={{fontSize: "18px", fontWeight: "bold"}}>
-                Please review your chosen word{selected.length > 1 ? "s" : ""} below.
-                <br /> Do you wish to proceed?
+                Review your selected word{selected.length > 1 ? "s" : ""}
+              </p>
+              <p style={{fontSize: "16px", marginTop: "8px", marginBottom: "16px"}}>
+                Please verify that your selection is correct. Once confirmed, you will not receive feedback on whether this selection is correct.
               </p>
               <div className="selected-pictures-preview-picture"
                 style={
@@ -507,8 +516,37 @@ const VisualSelectionWord = () => {
                         boxSizing: "border-box",
                         padding: 0,
                         margin: 0,
+                        position: "relative",
                       }}
                     >
+                      <button
+                        onClick={() => {
+                          setSelected(prev => prev.filter(i => i !== idx));
+                        }}
+                        style={{
+                          position: "absolute",
+                          top: 4,
+                          right: 4,
+                          width: 24,
+                          height: 24,
+                          borderRadius: "50%",
+                          border: "1px solid #ccc",
+                          background: "#f3f4f6",
+                          color: "#666",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          padding: 0,
+                          lineHeight: 1,
+                          zIndex: 10,
+                        }}
+                        title="Remove this word"
+                      >
+                        ×
+                      </button>
                       <div
                         className="preview-word-img-container"
                         style={{
@@ -558,7 +596,7 @@ const VisualSelectionWord = () => {
               </div>
               <div className="modal-actions-picture" style={{ marginTop: 24, display: "flex", justifyContent: "center", gap: 16 }}>
                 <button className="button" onClick={confirmSelection}>
-                  Yes, proceed
+                  Confirm selection
                 </button>
                 <button className="button-secondary" onClick={() => setShowConfirm(false)}>
                   Cancel
