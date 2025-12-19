@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import  { getUserID, logoutVoter } from "../../API/Voter";
+import { getUserID, logoutVoter } from "../../API/Voter";
 import "./study-info.css";
 
 const StudyInfo2 = () => {
   const navigate = useNavigate();
   const [userID, setUserID] = useState(null);
+  const [showCopiedMessage, setShowCopiedMessage] = useState(false);
 
   useEffect(() => {
     const fetchUserID = async () => {
@@ -15,14 +16,7 @@ const StudyInfo2 = () => {
     fetchUserID();
   }, []);
 
-  function copyIdToClipBoard() {
-    if (userID) {
-      navigator.clipboard.writeText(userID);
-    }
-  }
-
-   // Block navigation using browser back/forward buttons
-   // Prevent back navigation by redirecting to current page
+  // Prevent back navigation by redirecting to current page
   useEffect(() => {
     const preventBackNavigation = (event) => {
       window.history.pushState(null, '', window.location.pathname);
@@ -39,6 +33,16 @@ const StudyInfo2 = () => {
       window.removeEventListener('popstate', preventBackNavigation);
     };
   }, [navigate]);
+
+  function copyIdToClipBoard() {
+    if (userID) {
+      navigator.clipboard.writeText(userID);
+      setShowCopiedMessage(true);
+      setTimeout(() => {
+        setShowCopiedMessage(false);
+      }, 3000); // Hide after 3 seconds
+    }
+  }
 
   return (
     <div className="study-center-bg">
@@ -102,9 +106,14 @@ const StudyInfo2 = () => {
           >
             📋
           </button>
+          {showCopiedMessage && (
+            <div className="copied-tooltip">
+              Successfully copied ✓ 
+            </div>
+          )}
         </div>
 
-        <button
+         <button
           className="study-button"
           style={{ marginTop: "2rem" }}
           onClick={async () => {
