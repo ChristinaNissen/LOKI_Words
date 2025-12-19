@@ -46,12 +46,6 @@ const StudyInfo1 = () => {
               <p>
                 All candidates are fictional. For this study, we ask you to cast your vote as if this is your <strong>first time voting</strong> in the election.
               </p>
-              <p>
-                While the voting system allows you to update your vote, please proceed as if you are casting your initial vote, not updating a previous one.
-              </p>
-              <p>
-                We ask you to vote for <strong>Martin Taylor.</strong>
-              </p>
               <label className="check-box blue-bg-highlight">
                 <input
                   type="checkbox"
@@ -59,7 +53,7 @@ const StudyInfo1 = () => {
                   onChange={handleChangeCheckbox}
                   className="blue-bg-highlight"
                 />
-                I understand and will vote for the candidate Martin Taylor.
+                I understand and will vote as if this is my first time
               </label>
             </div>
           </div>

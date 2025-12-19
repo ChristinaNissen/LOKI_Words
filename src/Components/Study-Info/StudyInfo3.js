@@ -44,7 +44,7 @@ const StudyInfo3 = () => {
             <div className="step-number">1</div>
             <div className="step-content">
               <p>
-                All candidates are fictional. In this second part of the study, we ask you to <strong>update your vote</strong> and cast it for <strong>Sofia Lee.</strong>
+                All candidates are fictional. In this second part of the study, we ask you to <strong>update your vote.</strong> You can choose the same candidate as before or a different one.
               </p>
               <label className="check-box blue-bg-highlight">
                 <input
@@ -53,7 +53,7 @@ const StudyInfo3 = () => {
                   onChange={handleChangeCheckbox}
                   className="blue-bg-highlight"
                 />
-                I understand and will update my vote for the candidate Sofia Lee.
+                I understand and will update my vote
               </label>
             </div>
           </div>
