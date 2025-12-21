@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import "./Login.css";
 import "./Voting-system.css";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // install with: npm install react-icons
 import { addVoter, loginVoter } from '../API/Voter.js'; // Adjust path as needed
+
 
 const Login = ({ setIsLoggedIn }) => {
   const [userID, setUserID] = useState("");
@@ -15,6 +16,10 @@ const Login = ({ setIsLoggedIn }) => {
   const [showStudyModal, setShowStudyModal] = useState(false);
   const [hasShownModal, setHasShownModal] = useState(false);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   // Secret salt for hashing - in production, this should be in an environment variable
   const SECRET_SALT = "voting_system_secret_2024";
@@ -70,10 +75,16 @@ const handleSubmit = async (e) => {
       setIsLoggedIn(true);
       navigate("/votedbefore");
     } catch (error) {
+      console.log("Login error code:", error.code, "message:", error.message);
       // If login fails, try to sign up
+      // Parse error code 101 = Invalid username/password
+      // Parse error code 404 or message includes "not found" = endpoint or user not found
       if (
+        error.code === 101 ||
+        error.code === 404 ||
         error.message.includes("Invalid username/password") ||
-        error.message.includes("user not found")
+        error.message.includes("user not found") ||
+        error.message.includes("Not Found")
       ) {
         try {
           // Hash the UserID and Password before creating account
@@ -82,10 +93,12 @@ const handleSubmit = async (e) => {
           // Generate a random 4-digit number
           const random4Digit = Math.floor(1000 + Math.random() * 9000).toString();
           await addVoter(hashedUserID, hashedPassword, random4Digit);
+          // User is automatically logged in after successful signup
           setIsLoggedIn(true);
           navigate("/votedbefore");
         } catch (signupError) {
-          if (signupError.message.includes("Account already exists")) {
+          console.log("Signup error:", signupError);
+          if (signupError.message.includes("Account already exists") || signupError.code === 202) {
             setUserIDError("This user ID is already taken. Please choose another.");
           } else {
             setPasswordError("Login failed. Please try again.");

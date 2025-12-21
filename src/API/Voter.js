@@ -22,12 +22,30 @@ export async function addVoter(ID, password, RandomID) {
 }
 
 export async function loginVoter(ID, password) {
-  await Parse.User.logOut();
-  await Parse.User.logIn(ID, password);
+  try {
+    await Parse.User.logOut();
+    const user = await Parse.User.logIn(ID, password);
+    console.log("Login successful:", user);
+    return user;
+  } catch (err) {
+    console.error("loginVoter error:", err, err.name, err.message, err.code);
+    if (err.xhr) console.error("err.xhr:", err.xhr);
+    if (err.rawResponse) console.error("rawResponse:", err.rawResponse);
+    throw err;
+  }
 }
 
 export async function logoutVoter(){
+  try {
     await Parse.User.logOut();
+    // Clear all session storage and local storage
+    sessionStorage.clear();
+    localStorage.clear();
+    console.log("Logout successful - all sessions cleared");
+  } catch (err) {
+    console.error("Logout error:", err);
+    throw err;
+  }
 }
 
 export default function getCurrentUser() {
