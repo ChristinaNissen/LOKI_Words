@@ -66,7 +66,7 @@ function BallotConfirmationWord(setIsLoggedIn) {
           <div className="security-box">
             <p className="text-small">
               <strong>Security Feature:</strong><br/>
-              This part of the voting system ensures that you can vote freely without any outside pressure.        
+              This word is a unique visual identifier linked to your voting record. You will need to remember this word from memory if you wish to update your vote later in the election.
             </p>
           </div>
         </div>

@@ -17,10 +17,10 @@ const NoPrivateMode = () => {
         <h1>Private Browsing Recommended</h1>
 
         <div className="security-box">
-          <p className="text-small">
+           <p className="text-small">
            <strong>Security Feature:</strong><br/>
           For your security and privacy, please use your browser's private (incognito)
-          browsing mode when using the voting platform. This ensures that your session is
+          mode when using the voting platform. This ensures that your session is
           protected and your browsing data is not retained.
           </p>
         </div>

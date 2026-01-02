@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import VoteContext from "../Contexts/VoteContext";
 import ProcessBar from "./ProcessBar";
@@ -11,6 +11,10 @@ const VotedBefore = () => {
   const { setUserSelectedYes } = useContext(VoteContext);
   const [selected, setSelected] = useState(null); // null means none selected yet
   const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSelect = (value) => {
     if (selected === value) {
@@ -44,6 +48,12 @@ const VotedBefore = () => {
         <h1 className="voted-before-h1">Have you voted before in this election?</h1>
         <div className="text-main text-voted-before" style={{ marginBottom: "1px" }}>
           Please select below whether you have voted in this election before or not.
+        </div>
+        <div className="security-box" style={{ maxWidth: 600, margin: '18px auto 24px auto' }}>
+          <p className="text-small">
+            <strong>Security Feature:</strong><br />
+            For your security and privacy, please select whether you have voted before in this election. This ensures that your vote remains protected and the election process is secure for all voters.
+          </p>
         </div>
         <div className="card-wide voted-before" style={{ padding: "40px 20px" }}>
           <div className="box-container">
