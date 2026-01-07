@@ -295,13 +295,10 @@ const VisualSelectionWord = () => {
           <div className="text-main">
             Please select all words below that you have seen when casting your previous ballots.
           </div>
-            <div className="security-box">
+          <div className="security-box-selection">
             <p className="text-small">
-              <strong>Why is this step needed?</strong><br />
-              This feature verifies your identity, ensuring that only you can update your vote by recognising the words shown to you after your previous voting session(s).<br /><br />
-              This feature also protects against coercion. If you are pressured to vote a certain way, you can intentionally select the wrong words to prevent your vote from being updated, without revealing your true voting history.<br /><br />
-              If you cannot remember your word(s), you can always vote in person at your local polling station.<br /><br />
-              <a href="/help#ballot-verification-security" className="faq-link">Read more in the FAQ</a>
+              <strong>Security Feature:</strong><br/>
+              This process allows you to update your vote securely and privately. It helps ensure your voting decisions are made by you.
             </p>
           </div>
         </div>
