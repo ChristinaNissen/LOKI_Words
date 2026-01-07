@@ -63,7 +63,7 @@ function BallotConfirmationWord(setIsLoggedIn) {
           <div className="text-main text-main-confirmation">
             You have cast your ballot succesfully! Below is a visual presentation of your cast ballot. 
           </div>
-          <div className="security-box">
+          <div className="security-box-confirmation">
             <p className="text-small">
               <strong>Security Feature:</strong><br/>
               This word is a unique visual identifier linked to your voting record. You will need to remember this word from memory if you wish to update your vote later in the election.
