@@ -115,7 +115,7 @@ const allImages = [
   img94, img95, img96, img97
 ];
 
-const PAGE_SIZE = 40;
+const PAGE_SIZE = 39;
 
 // Helper function: Fisher-Yates shuffle
 const shuffleArray = (array) => {
@@ -302,11 +302,11 @@ const VisualSelectionWord = () => {
             </p>
           </div>
         </div>
-        <div className="card" style={{ maxWidth: 1000, width: "100%", margin: "0 auto" }}>
-          <h1 style={{ width: "100%", textAlign: "left", margin: "0 0 10px 55px" }}>
+        <div className="card-wide">
+          <h1 className="card-heading-select" style={{ width: "100%", textAlign: "left", margin: "0 0 10px 40px" }}>
             Select your words
           </h1>
-          <div className="instruction-list" style={{ maxWidth: "800px", margin: "0 auto 0px auto", textAlign:"left" }}>
+          <div className="instruction-list" style={{ maxWidth: "800px", margin: "0 auto 20px auto", textAlign: "left", paddingLeft: "35px" }}>
             <ul>
               <li>You must select <strong>all</strong> the words below that you have seen when casting your previous ballots. This includes words from both valid and invalid ballots.</li>
               <li>The system will not reveal if your selection is correct for security reasons.</li>
