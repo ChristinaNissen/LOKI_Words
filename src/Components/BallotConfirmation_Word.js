@@ -7,20 +7,13 @@ import word from "../Words/Sibling.png";
 import ProcessBar from "./ProcessBar.js"; 
 import { useLocation } from "react-router-dom";
 import VoteContext from "../Contexts/VoteContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { saveVisuaRepresentation } from "../API/Voter";
-import getCurrentUser from "../API/Voter";
 
 function BallotConfirmationWord(setIsLoggedIn) {
   const navigate = useNavigate();
   const location = useLocation();
   const { userSelectedYes } = useContext(VoteContext);
-  const [isLoggedIn, setIsUserLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const currentUser = getCurrentUser();
-    setIsUserLoggedIn(!!currentUser);
-  }, []);
 
   // Retrieve candidate name from navigation state; fallback if not set.
   const votedCandidate = location.state?.votedCandidate || "Candidate Unknown";
@@ -63,10 +56,13 @@ function BallotConfirmationWord(setIsLoggedIn) {
           <div className="text-main text-main-confirmation">
             You have cast your ballot succesfully! Below is a visual presentation of your cast ballot. 
           </div>
-          <div className="security-box-confirmation">
+             <div className="security-box-confirmation">
             <p className="text-small">
-              <strong>Security Feature:</strong><br/>
-              This word is a unique visual identifier linked to your voting record. You will need to remember this word from memory if you wish to update your vote later in the election.
+              <strong>Why do you need this word?</strong><br />
+              This word is a unique visual identifier linked to your voting record. You will need to remember this word from memory if you wish to update your vote later in the election, as it proves your identity and ensures that only you can make changes to your ballot.<br /><br />
+              To protect against coercion risks, please take time to memorise this word now. Do not write it down or save it anywhere. Relying on your memory helps keep your vote private and secure.
+              <br /><br />
+              <a href="/help#ballot-verification-security" className="faq-link">Read more in the FAQ</a>
             </p>
           </div>
         </div>
@@ -91,33 +87,27 @@ function BallotConfirmationWord(setIsLoggedIn) {
       </li>
     </ul>
   </div>
-          {isLoggedIn && (
-            <img
-              src={word}
-              className="image-word"
-              alt="Visual ballot"
-              style={{
-                maxWidth: "100%",
-                maxHeight: "400px",
-                marginTop: "0px",
-                borderColor: "#c1bfbfff",
-                borderWidth: "2px",
-                borderStyle: "solid"
-              }}
-            />
-          )}
+          <img
+            src={word}
+            className="image-word"
+            alt="Visual ballot"
+            style={{
+              maxWidth: "100%",
+              maxHeight: "400px",
+              marginTop: "0px",
+              borderColor: "#c1bfbfff",
+              borderWidth: "2px",
+              borderStyle: "solid"
+            }}
+          />
        
 
             <div className="confirmation-info">
-                 {isLoggedIn && (
-                   <>
-                     <div className="confirmation-card-label" style={{fontWeight: "bold", fontSize: "1.5rem", marginTop: "10px"}}>
-                       Sibling
-                     </div>
-                     <div className="confirmation-datetime">{dateTime}</div>
-                     <div className="confirmation-candidate"> {votedCandidate}</div>
-                   </>
-                 )}
+              <div className="confirmation-card-label" style={{fontWeight: "bold", fontSize: "1.5rem", marginTop: "10px"}}>
+                Sibling
+              </div>
+              <div className="confirmation-datetime">{dateTime}</div>
+              <div className="confirmation-candidate"> {votedCandidate}</div>
             </div>
         
         </div>
